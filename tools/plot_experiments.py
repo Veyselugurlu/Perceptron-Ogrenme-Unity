@@ -205,6 +205,13 @@ def fig_dodge(throws):
     plt.close(fig)
 
 
+def separable(rows):
+    """Is there a line w1*x + w2*y + b with >= 1 for class 1 and <= -1 for class 0? (linear programme)"""
+    from scipy.optimize import linprog
+    a = [[-x, -y, -1] if c == 1 else [x, y, 1] for x, y, c in rows]
+    return bool(linprog(np.zeros(3), A_ub=a, b_ub=[-1] * len(a), bounds=[(None, None)] * 3).status == 0)
+
+
 def summarize(epochs, runs, grunts, throws, drawray):
     s = {"logic": {}, "grapher": {}, "dodgeball": {}, "drawray": drawray}
     for g, _, _ in GATES:
@@ -230,6 +237,7 @@ def summarize(epochs, runs, grunts, throws, drawray):
             "correct_after_200_max": max(correct),
             "test_03_09_food": sum(1 for x in r if x["test_03_09"] == "1"),
             "test_08_01_food": sum(1 for x in r if x["test_08_01"] == "1"),
+            "separable": separable(SCENE_SET if name == "scene" else FIGURE_SET),
         }
     by = defaultdict(list)
     for r in throws:

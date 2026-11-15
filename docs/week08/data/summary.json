@@ -60,7 +60,8 @@
    "correct_after_200_min": 14,
    "correct_after_200_max": 14,
    "test_03_09_food": 100,
-   "test_08_01_food": 0
+   "test_08_01_food": 0,
+   "separable": true
   },
   "figure": {
    "seeds": 100,
@@ -72,7 +73,8 @@
    "correct_after_200_min": 6,
    "correct_after_200_max": 12,
    "test_03_09_food": 98,
-   "test_08_01_food": 0
+   "test_08_01_food": 0,
+   "separable": false
   }
  },
  "dodgeball": {
