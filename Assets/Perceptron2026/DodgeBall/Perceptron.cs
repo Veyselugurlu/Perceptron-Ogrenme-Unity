@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace DodgeBall
 {
@@ -113,7 +114,7 @@ namespace DodgeBall
         }
 
         void Update () {
-            if(Input.GetKeyDown("space"))
+            if(Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame) // Input System
             {
                 InitialiseWeights();
                 ts.Clear();
