@@ -54,6 +54,7 @@ namespace DodgeBall
 
             QualitySettings.vSyncCount = 0;
             Application.targetFrameRate = -1;
+            Application.runInBackground = true; // a recording window behind other windows would otherwise pause
             string dir = Value(args, "-recordFrames");
             if (!string.IsNullOrEmpty(dir))
             {
