@@ -143,11 +143,17 @@ def build_sheet(ws, gate, start, desired, note):
         ws[f"O{r}"].number_format = "0.0"
         ws[f"O{r}"].font = NORMAL
 
-    widths = {"A": 17, "B": 9, "C": 9, "D": 9, "E": 9, "F": 9, "G": 10, "H": 9, "I": 9, "J": 8, "K": 13,
-              "L": 3, "M": 9, "N": 13, "O": 22}
+    widths = {"A": 17, "B": 9, "C": 9, "D": 9, "E": 9, "F": 9, "G": 10, "H": 10, "I": 10, "J": 9, "K": 15,
+              "L": 3, "M": 9, "N": 15, "O": 22}
     for c, w in widths.items():
         ws.column_dimensions[c].width = w
     ws.freeze_panes = f"A{FIRST}"
+    # printing: landscape, all columns on one page width
+    ws.page_setup.orientation = "landscape"
+    ws.page_setup.paperSize = ws.PAPERSIZE_A4
+    ws.sheet_properties.pageSetUpPr.fitToPage = True
+    ws.page_setup.fitToWidth = 1
+    ws.page_setup.fitToHeight = 0
 
 
 def main():
