@@ -12,6 +12,8 @@ namespace LogicGates
     public class Perceptron : MonoBehaviour
     {
         public TrainingSet[] ts;
+        [Tooltip("Number of passes over the training set in Start (8 in the lecture example).")]
+        public int epochs = 8;
         double[] weights = { 0, 0 };
         double bias = 0;
         double totalError = 0;
@@ -82,17 +84,29 @@ namespace LogicGates
                     UpdateWeights(t);
                     Debug.Log("W1: " + (weights[0]) + " W2: " + (weights[1]) + " B: " + bias);
                 }
-                Debug.Log("TOTAL ERROR: " + totalError);
+                Debug.Log(name + " TOTAL ERROR: " + totalError);
+                EpochFinished?.Invoke(e + 1, totalError);
             }
         }
 
         void Start()
         {
-            Train(8);
-            Debug.Log("Test 0 0: " + CalcOutput(0, 0));
-            Debug.Log("Test 0 1: " + CalcOutput(0, 1));
-            Debug.Log("Test 1 0: " + CalcOutput(1, 0));
-            Debug.Log("Test 1 1: " + CalcOutput(1, 1));
+            Train(epochs);
+            Debug.Log(name + " Test 0 0: " + CalcOutput(0, 0));
+            Debug.Log(name + " Test 0 1: " + CalcOutput(0, 1));
+            Debug.Log(name + " Test 1 0: " + CalcOutput(1, 0));
+            Debug.Log(name + " Test 1 1: " + CalcOutput(1, 1));
         }
+
+        // ---- read access for the experiments (Editor/LogicGateExperiments.cs) ----
+
+        /// <summary>Raised after every epoch with the epoch number (1-based) and that epoch's total error.</summary>
+        public event System.Action<int, double> EpochFinished;
+
+        public void TrainEpochs(int count) => Train(count);
+        public double Output(double i1, double i2) => CalcOutput(i1, i2);
+        public double Weight1 => weights[0];
+        public double Weight2 => weights[1];
+        public double Bias => bias;
     }
 }
