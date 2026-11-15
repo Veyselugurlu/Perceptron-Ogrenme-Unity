@@ -120,5 +120,12 @@ namespace Grapher
         void Update () {
 
         }
+
+        // ---- read access for the experiments (Editor/GrapherExperiments.cs) ----
+        public void TrainEpochs(int epochs) => Train(epochs);
+        public double Output(double i1, double i2) => CalcOutput(i1, i2);
+        public double Weight1 => weights[0];
+        public double Weight2 => weights[1];
+        public double Bias => bias;
     }
 }
