@@ -1,0 +1,109 @@
+{
+ "logic": {
+  "OR": {
+   "seeds": 100,
+   "converged": 100,
+   "epochs_run": 50,
+   "first_zero_mean": 3.83,
+   "first_zero_min": 1,
+   "first_zero_max": 6,
+   "correct_outputs": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 100
+   },
+   "last_epoch_error_mean": 0.0
+  },
+  "AND": {
+   "seeds": 100,
+   "converged": 100,
+   "epochs_run": 50,
+   "first_zero_mean": 6.24,
+   "first_zero_min": 1,
+   "first_zero_max": 9,
+   "correct_outputs": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 100
+   },
+   "last_epoch_error_mean": 0.0
+  },
+  "XOR": {
+   "seeds": 100,
+   "converged": 0,
+   "epochs_run": 1000,
+   "first_zero_mean": null,
+   "first_zero_min": null,
+   "first_zero_max": null,
+   "correct_outputs": {
+    "0": 0,
+    "1": 32,
+    "2": 68,
+    "3": 0,
+    "4": 0
+   },
+   "last_epoch_error_mean": 4.0
+  }
+ },
+ "grapher": {
+  "scene": {
+   "seeds": 100,
+   "converged": 100,
+   "first_mean": 5.2,
+   "first_min": 1,
+   "first_max": 12,
+   "correct_after_200_mean": 14,
+   "correct_after_200_min": 14,
+   "correct_after_200_max": 14,
+   "test_03_09_food": 100,
+   "test_08_01_food": 0,
+   "separable": true
+  },
+  "figure": {
+   "seeds": 100,
+   "converged": 0,
+   "first_mean": null,
+   "first_min": null,
+   "first_max": null,
+   "correct_after_200_mean": 11.17,
+   "correct_after_200_min": 6,
+   "correct_after_200_max": 12,
+   "test_03_09_food": 98,
+   "test_08_01_food": 0,
+   "separable": false
+  }
+ },
+ "dodgeball": {
+  "seeds": 30,
+  "throws_per_seed": 40,
+  "wrong_mean": 2.07,
+  "wrong_std": 1.17,
+  "wrong_min": 0,
+  "wrong_max": 5,
+  "last_wrong_mean": 5.6,
+  "last_wrong_max": 15,
+  "seeds_without_mistake": 2,
+  "red_throws": 298,
+  "red_hits": 27,
+  "wrong_after_throw_15": 0,
+  "stand_equals_hit": 1200,
+  "total_throws": 1200,
+  "final_weights_example": {
+   "w1": "1.001",
+   "w2": "1.451",
+   "bias": "-0.362"
+  }
+ },
+ "drawray": {
+  "seed": 78,
+  "slope": 0.756832,
+  "intercept": 0.266464,
+  "end_offset_px": 75.7,
+  "end_offset_px_mean_100_seeds": 30.3,
+  "end_offset_px_max_100_seeds": 75.7
+ }
+}
