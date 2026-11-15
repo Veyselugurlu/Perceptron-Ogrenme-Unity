@@ -6,6 +6,7 @@ using UnityEngine;
 /// <summary>
 /// Builds the week's scenes from code (menu: Perceptron). No external assets are used.
 ///   LogicGates.unity   three perceptrons with the same script, trained on OR, AND and XOR data
+/// The other scenes are in the PerceptronSceneBuilder.*.cs files.
 /// </summary>
 public static partial class PerceptronSceneBuilder
 {
@@ -49,12 +50,17 @@ public static partial class PerceptronSceneBuilder
     public static void BuildAll()
     {
         BuildLogicGates();
+        BuildGrapher();
         RegisterScenes();
     }
 
     private static void RegisterScenes()
     {
-        EditorBuildSettings.scenes = new[] { new EditorBuildSettingsScene(LogicScenePath, true) };
+        EditorBuildSettings.scenes = new[]
+        {
+            new EditorBuildSettingsScene(LogicScenePath, true),
+            new EditorBuildSettingsScene(GrapherScenePath, true),
+        };
         if (File.Exists("Assets/Scenes/SampleScene.unity"))
         {
             AssetDatabase.DeleteAsset("Assets/Scenes/SampleScene.unity");
