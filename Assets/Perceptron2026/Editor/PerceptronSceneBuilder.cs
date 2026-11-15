@@ -51,6 +51,7 @@ public static partial class PerceptronSceneBuilder
     {
         BuildLogicGates();
         BuildGrapher();
+        BuildDodgeBall();
         RegisterScenes();
     }
 
@@ -60,6 +61,7 @@ public static partial class PerceptronSceneBuilder
         {
             new EditorBuildSettingsScene(LogicScenePath, true),
             new EditorBuildSettingsScene(GrapherScenePath, true),
+            new EditorBuildSettingsScene(DodgeScenePath, true),
         };
         if (File.Exists("Assets/Scenes/SampleScene.unity"))
         {

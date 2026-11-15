@@ -42,7 +42,15 @@ namespace DodgeBall
             s.output = o;
             ts.Add(s);
             Train();
-        }    
+            Reacted?.Invoke(i1, i2, o, result);
+        }
+
+        /// <summary>Raised after every throw: inputs, desired output and the decision made before learning.</summary>
+        public event System.Action<double, double, double, double> Reacted;
+        public double Weight1 => weights[0];
+        public double Weight2 => weights[1];
+        public double Bias => bias;
+        public int Experiences => ts.Count;
 
         double DotProductBias(double[] v1, double[] v2) 
         {
