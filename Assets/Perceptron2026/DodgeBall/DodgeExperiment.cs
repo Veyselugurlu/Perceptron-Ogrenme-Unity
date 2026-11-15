@@ -30,6 +30,7 @@ namespace DodgeBall
         private System.Random sequence;
         private readonly Dictionary<int, int> ballToThrow = new Dictionary<int, int>();
         private readonly List<Row> rows = new List<Row>();
+        private static int recordedFrames;
 
         private class Row
         {
@@ -98,6 +99,7 @@ namespace DodgeBall
                 int key = sequence.Next(1, 5);
                 GameObject ball = thrower.ThrowObject(key);
                 rows[rows.Count - 1].key = key;
+                Debug.Log($"DodgeExperiment: throw {t + 1} key {key} at recorded frame {recordedFrames}");
                 ballToThrow[ball.GetInstanceID()] = rows.Count - 1;
                 yield return new WaitForSeconds(interval);
             }
@@ -130,6 +132,7 @@ namespace DodgeBall
                 if (frame % every != 0) continue;
                 Texture2D shot = ScreenCapture.CaptureScreenshotAsTexture();
                 File.WriteAllBytes(Path.Combine(dir, $"frame_{saved++:0000}.png"), shot.EncodeToPNG());
+                recordedFrames = saved;
                 Destroy(shot);
             }
         }
