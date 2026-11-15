@@ -83,7 +83,9 @@ namespace Grapher
             float y = (intercept * scale) + yoffset;
 
             float x2 = 600 + xoffset;
-            float y2 = slope * x2 + (intercept * scale) + yoffset;
+            // x2 is a pixel position; the line's x is measured from the y axis, so the offset is removed first
+            // (slope * x2 lifted the end point by slope * xoffset pixels and tilted the line)
+            float y2 = slope * (x2 - xoffset) + (intercept * scale) + yoffset;
 
             //Circle((int)x,(int)y,10,Color.green);
             //Circle((int)x2,(int)y2,10,Color.green);
