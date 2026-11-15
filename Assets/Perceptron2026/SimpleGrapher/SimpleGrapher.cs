@@ -135,8 +135,8 @@ namespace Grapher
                 tex.SetPixel(xoffset, y, c);
         }
 
-        // Use this for initialization
-        void Start() {
+        // Awake, not Start: Perceptron.Start draws into the texture, and the order of two Start calls is not defined
+        void Awake() {
             rend = this.GetComponent<RawImage>();
             tex = rend.texture as Texture2D;
 
